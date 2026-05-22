@@ -1,98 +1,127 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+export default function WelcomeScreen() {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <View style={styles.container}>
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+      <Text style={styles.logo}>Logo</Text>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+      <Image
+        source={require('../../assets/images/sda.png')}
+        style={styles.image}
+        resizeMode="contain"
+      />
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+      <Text style={styles.title}>
+        El mejor surtido para tu negocio en un solo lugar
+      </Text>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      <TouchableOpacity
+        style={styles.registerButton}
+        onPress={() => router.push('/registro' as any)}
+      >
+        <Text style={styles.registerText}>Regístrate</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.description}>
+        Si es tu primera compra en esta app.
+      </Text>
+
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => router.push('/login' as any)}
+      >
+        <Text style={styles.loginText}>Inicia sesión</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.footerText}>
+        Con tus credenciales de Agora o de la nueva app Merkao
+      </Text>
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    // paddingHorizontal: 30,
   },
+
+  logo: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#1E3A8A',
+    marginBottom: 30,
+  },
+
+  image: {
+    width: 360,
+    height: 360,
+    marginBottom: 30,
+    borderRadius:10
+  },
+
   title: {
+    fontSize: 30,
+    fontWeight: '700',
+    color: '#1E3A8A',
     textAlign: 'center',
+    marginBottom: 40,
+    lineHeight: 38,
   },
-  code: {
-    textTransform: 'uppercase',
+
+  registerButton: {
+    width: '100%',
+    backgroundColor: '#FACC15',
+    paddingVertical: 18,
+    borderRadius: 18,
+    alignItems: 'center',
+    marginBottom: 15,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+
+  registerText: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#1E3A8A',
+  },
+
+  description: {
+    color: '#999',
+    fontSize: 16,
+    marginBottom: 25,
+  },
+
+  loginButton: {
+    width: '100%',
+    borderWidth: 2,
+    borderColor: '#1E3A8A',
+    paddingVertical: 18,
+    borderRadius: 18,
+    alignItems: 'center',
+  },
+
+  loginText: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#1E3A8A',
+  },
+
+  footerText: {
+    textAlign: 'center',
+    color: '#999',
+    marginTop: 25,
+    fontSize: 16,
+    lineHeight: 24,
   },
 });

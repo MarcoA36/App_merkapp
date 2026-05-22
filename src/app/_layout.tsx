@@ -1,16 +1,49 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import React from 'react';
-import { useColorScheme } from 'react-native';
+// import { Stack } from 'expo-router';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+// export default function RootLayout() {
+//   return (
+//     <Stack screenOptions={{ headerShown: false }}>
+//       {/* Pantallas públicas */}
+//       <Stack.Screen name="index" />
+//       <Stack.Screen name="login" />
+//       <Stack.Screen name="registro" />
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+//       {/* Área privada con tabs */}
+//       <Stack.Screen name="(tabs)" />
+//     </Stack>
+//   );
+// }
+
+
+
+
+// app/_layout.tsx
+
+import { Stack } from "expo-router";
+
+import {
+  SafeAreaProvider,
+  SafeAreaView,
+} from "react-native-safe-area-context";
+
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <SafeAreaView
+        style={{ flex: 1,   backgroundColor: "#7b3636" }}
+        edges={["top", "bottom"]}
+      >
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="login" />
+          <Stack.Screen name="registro" />
+          <Stack.Screen name="(tabs)" />
+        </Stack>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
