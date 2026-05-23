@@ -1,100 +1,99 @@
-// data/categories.ts
-
 export const categories = [
+  // =========================
+  // BODEGA
+  // =========================
+
   {
-    id: 1,
-    title: "Liquidación",
-    image: "https://cdn-icons-png.flaticon.com/512/1170/1170678.png",
-    bg: "#EDE7FF",
-  },
-  {
-    id: 2,
-    title: "Mascotas",
-    image: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-    bg: "#FFE5D9",
-  },
-  {
-    id: 3,
-    title: "Unilever",
-    image: "https://cdn-icons-png.flaticon.com/512/3081/3081986.png",
+    id: "bebidas",
+    departamentId: "bodega",
+    title: "Bebidas",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/2405/2405479.png",
     bg: "#FFF3BF",
   },
+
   {
-    id: 4,
-    title: "Bebidas y\nRefrescos",
-    image: "https://cdn-icons-png.flaticon.com/512/2405/2405479.png",
-    bg: "#FFF1C1",
+    id: "snacks",
+    departamentId: "bodega",
+    title: "Snacks",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/2553/2553691.png",
+    bg: "#FFE5D9",
   },
+
   {
-    id: 5,
-    title: "Bebidas\nAlcoholicas",
-    image: "https://cdn-icons-png.flaticon.com/512/3050/3050158.png",
-    bg: "#FFF1C1",
+    id: "limpieza",
+    departamentId: "bodega",
+    title: "Limpieza",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/995/995053.png",
+    bg: "#E7F0FF",
   },
+
   {
-    id: 6,
-    title: "Abarrotes",
-    image: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+    id: "desayuno",
+    departamentId: "bodega",
+    title: "Desayuno",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+    bg: "#FFF0E5",
+  },
+
+  {
+    id: "mascotas",
+    departamentId: "bodega",
+    title: "Mascotas",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+    bg: "#E9F5FF",
+  },
+
+  // =========================
+  // FARMACIA
+  // =========================
+
+  {
+    id: "analgesicos",
+    departamentId: "farmacia",
+    title: "Analgésicos",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/4320/4320337.png",
     bg: "#F2E8FF",
   },
+
   {
-    id: 7,
-    title: "Mundo\nDesayuno",
-    image: "https://cdn-icons-png.flaticon.com/512/3075/3075977.png",
-    bg: "#F4F4F4",
+    id: "vitaminas",
+    departamentId: "farmacia",
+    title: "Vitaminas",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/2966/2966481.png",
+    bg: "#E8FFF1",
   },
+
   {
-    id: 8,
-    title: "Cigarrillos",
-    image: "https://cdn-icons-png.flaticon.com/512/2935/2935307.png",
-    bg: "#F4F4F4",
+    id: "higiene",
+    departamentId: "farmacia",
+    title: "Higiene",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/2965/2965567.png",
+    bg: "#E6F7FF",
   },
+
   {
-    id: 9,
-    title: "Panaderia y\nReposteria",
-    image: "https://cdn-icons-png.flaticon.com/512/3082/3082011.png",
-    bg: "#F4F4F4",
+    id: "bebes",
+    departamentId: "farmacia",
+    title: "Bebés",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/3082/3082038.png",
+    bg: "#FFF5F7",
   },
+
   {
-    id: 10,
-    title: "Panadería",
-    image: "https://cdn-icons-png.flaticon.com/512/1046/1046857.png",
-    bg: "#FFF1C1",
-  },
-  {
-    id: 11,
-    title: "Limpieza y",
-    image: "https://cdn-icons-png.flaticon.com/512/995/995053.png",
-    bg: "#F4F4F4",
-  },
-  {
-    id: 12,
-    title: "Abarrotes",
-    image: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
-    bg: "#F4F4F4",
-  },
-  {
-    id: 13,
-    title: "Panaderia y\nReposteria",
-    image: "https://cdn-icons-png.flaticon.com/512/3082/3082011.png",
-    bg: "#F4F4F4",
-  },
-  {
-    id: 14,
-    title: "Panadería",
-    image: "https://cdn-icons-png.flaticon.com/512/1046/1046857.png",
-    bg: "#FFF1C1",
-  },
-  {
-    id: 15,
-    title: "Limpieza y",
-    image: "https://cdn-icons-png.flaticon.com/512/995/995053.png",
-    bg: "#F4F4F4",
-  },
-  {
-    id: 16,
-    title: "Abarrotes",
-    image: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
-    bg: "#F4F4F4",
+    id: "dermocosmetica",
+    departamentId: "farmacia",
+    title: "Dermocosmética",
+    image:
+      "https://cdn-icons-png.flaticon.com/512/2922/2922561.png",
+    bg: "#FCEBFF",
   },
 ];

@@ -39,33 +39,8 @@ export default function CategoriasScreen() {
 
         <View style={styles.grid}>
           {categories.map((item) => (
-            // <TouchableOpacity
-            //   key={item.id}
-            //   style={styles.categoryItem}
-            //   activeOpacity={0.8}
-            //   onPress={() =>
-            //     router.push({
-            //       pathname: "/categoria/[id]",
-            //       params: {
-            //         id: item.id,
-            //         name: item.title,
-            //       },
-            //     })
-            //   }
-            // >
-            //   <View
-            //     style={[styles.imageContainer, { backgroundColor: item.bg }]}
-            //   >
-            //     <Image
-            //       source={{ uri: item.image }}
-            //       style={styles.image}
-            //       resizeMode="contain"
-            //     />
-            //   </View>
-
-            //   <Text style={styles.categoryText}>{item.title}</Text>
-            // </TouchableOpacity>
             <CategoryCircle
+                key={item.id}
               title={item.title}
               image={item.image}
               bg={item.bg}
