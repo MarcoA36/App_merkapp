@@ -15,7 +15,6 @@ export default function TabsLayout() {
         },
       }}
     >
-
       <Tabs.Screen
         name="index"
         options={{
@@ -47,7 +46,7 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="buscar"
+        name="busqueda"
         options={{
           title: "Buscar",
           tabBarIcon: ({ color, size }) => (
@@ -65,30 +64,30 @@ export default function TabsLayout() {
           ),
         }}
       />
+      {/* <Tabs.Screen
+        name="categoria/[id]"
+        options={{
+          href: null,
+        }}
+      />
       <Tabs.Screen
-  name="categoria/[id]"
-  options={{
-    href: null,
-  }}
-/>
-    <Tabs.Screen
-  name="producto/[id]"
-  options={{
-    href: null,
-  }}
-/>
-   <Tabs.Screen
-  name="marca/[id]"
-  options={{
-    href: null,
-  }}
-/>
-   <Tabs.Screen
-  name="carrito/index"
-  options={{
-    href: null,
-  }}
-/>
+        name="producto/[id]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="marca/[id]"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="carrito/index"
+        options={{
+          href: null,
+        }}
+      /> */}
     </Tabs>
   );
 }

@@ -37,7 +37,8 @@ export const layout = {
   sectionSpacing: 35,
 
   headerBottom: 20,
-
+  gridGap: 12,
+  maxContentWidth: 520,
 };
 
 export const radius = {

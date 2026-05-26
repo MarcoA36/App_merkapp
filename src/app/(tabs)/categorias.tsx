@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 
 import { router } from "expo-router";
 
@@ -15,12 +10,7 @@ import SectionHeader from "@/components/Headers/SectionHeader";
 
 import Screen from "@/components/Layout/Screen";
 
-import {
-  colors,
-  layout,
-  spacing,
-  typography,
-} from "@/theme/theme";
+import { colors, layout, spacing, typography } from "@/theme/theme";
 
 export default function CategoriasScreen() {
   return (
@@ -28,16 +18,10 @@ export default function CategoriasScreen() {
       <SectionHeader title="Categorias" />
 
       <ScrollView
-        showsVerticalScrollIndicator={
-          false
-        }
-        contentContainerStyle={
-          styles.content
-        }
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}
       >
-        <Text style={styles.allCategories}>
-          Todas las categorías
-        </Text>
+        <Text style={styles.allCategories}>Todas las categorías</Text>
 
         <View style={styles.grid}>
           {categories.map((item) => (
@@ -48,8 +32,7 @@ export default function CategoriasScreen() {
               bg={item.bg}
               onPress={() =>
                 router.push({
-                  pathname:
-                    "/categoria/[id]",
+                  pathname: "/categoria/[id]",
 
                   params: {
                     id: item.id,
@@ -73,8 +56,7 @@ export default function CategoriasScreen() {
 
 const styles = StyleSheet.create({
   content: {
-    paddingHorizontal:
-      layout.screenPadding,
+    paddingHorizontal: layout.screenPadding,
   },
 
   allCategories: {
@@ -90,7 +72,6 @@ const styles = StyleSheet.create({
 
     flexWrap: "wrap",
 
-    justifyContent:
-      "space-between",
+    justifyContent: "space-between",
   },
 });
