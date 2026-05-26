@@ -1,7 +1,6 @@
-import CategoryCircle from "@/components/CategoryCircle";
-import BrandCard from "@/components/BrandCard";
-import PromotionBanner from "@/components/PromotionBanner";
+import CategoryCircle from "@/components/Category/CategoryCircle";
 
+import PromotionBanner from "@/components/PromotionBanner";
 
 import { brands } from "@/data/brands";
 import { promotions } from "@/data/promotions";
@@ -15,262 +14,208 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import AppHeader from "@/components/AppHeader";
+
 import OrderCard from "@/components/OrderCard";
+
 import { categories } from "@/data/categories";
+
+import BrandCard from "@/components/Brand/BrandCard";
+
+import HomeHeader from "@/components/Headers/HomeHeader";
+
+import Screen from "@/components/Layout/Screen";
+
+import {
+  colors,
+  spacing,
+  layout,
+  typography,
+} from "@/theme/theme";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <AppHeader />
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <Screen backgroundColor={colors.background}>
+      <HomeHeader />
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
         {/* PEDIDO */}
 
-        {/* <View style={styles.orderCard}>
-          <View>
-            <Text style={styles.orderSmall}>Tienes 1 pedido</Text>
+        <OrderCard />
 
-            <Text style={styles.orderTitle}>Entrega Jueves 26/02</Text>
-
-            <Text style={styles.orderSmall}>7 a.m. - 7 p.m.</Text>
-          </View>
-
-          <Text style={styles.orderArrow}>→</Text>
-        </View> */}
-<OrderCard/>
         {/* PROMOCIONES */}
 
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.promotionsContainer}
+          contentContainerStyle={
+            styles.promotionsContainer
+          }
         >
           {promotions.map((promo) => (
-            <PromotionBanner key={promo.id} image={promo.image} />
+            <PromotionBanner
+              key={promo.id}
+              image={promo.image}
+            />
           ))}
         </ScrollView>
 
         {/* MARCAS */}
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Marcas</Text>
+          <Text style={styles.sectionTitle}>
+            Marcas
+          </Text>
 
-          <TouchableOpacity onPress={() => router.push("/marcas")}>
-            <Text style={styles.seeMore}>Ver más</Text>
+          <TouchableOpacity
+            onPress={() =>
+              router.push("/marcas")
+            }
+          >
+            <Text style={styles.seeMore}>
+              Ver más
+            </Text>
           </TouchableOpacity>
         </View>
 
         <ScrollView
           horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.horizontalContent}
+          showsHorizontalScrollIndicator={
+            false
+          }
+          contentContainerStyle={
+            styles.horizontalContent
+          }
         >
-          {brands.slice(0, 6).map((brand) => (
-            <BrandCard key={brand.id} name={brand.name} />
-          ))}
+          {brands
+            .slice(0, 6)
+            .map((brand) => (
+              <BrandCard
+                key={brand.id}
+                name={brand.name}
+                image={brand.image}
+                onPress={() =>
+                  router.push({
+                    pathname:
+                      "/marca/[id]",
+
+                    params: {
+                      id: brand.id,
+                    },
+                  })
+                }
+              />
+            ))}
         </ScrollView>
 
         {/* CATEGORÍAS */}
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Categorías</Text>
+          <Text style={styles.sectionTitle}>
+            Categorías
+          </Text>
 
-          <TouchableOpacity onPress={() => router.push("/categorias")}>
-            <Text style={styles.seeMore}>Ver más</Text>
+          <TouchableOpacity
+            onPress={() =>
+              router.push(
+                "/categorias"
+              )
+            }
+          >
+            <Text style={styles.seeMore}>
+              Ver más
+            </Text>
           </TouchableOpacity>
         </View>
 
-        {/* <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.horizontalContent}
-        >
-          {categories.slice(0, 6).map((item) => (
-            <CategoryCircle
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              bg={item.bg}
-              onPress={() =>
-                router.push({
-                  pathname: "/categoria/[id]",
-
-                  params: {
-                    id: item.id,
-                    name: item.title,
-                  },
-                })
-              }
-            />
-          ))}
-        </ScrollView> */}
         <ScrollView
-  horizontal
-  showsHorizontalScrollIndicator={false}
-  contentContainerStyle={styles.horizontalContent}
->
-  {categories.slice(0, 6).map((item) => (
-    <CategoryCircle
-      key={item.id}
-      title={item.title}
-      image={item.image}
-      bg={item.bg}
-      onPress={() =>
-        router.push({
-          pathname: "/categoria/[id]",
+          horizontal
+          showsHorizontalScrollIndicator={
+            false
+          }
+          contentContainerStyle={
+            styles.horizontalContent
+          }
+        >
+          {categories
+            .slice(0, 6)
+            .map((item) => (
+              <CategoryCircle
+                key={item.id}
+                title={item.title}
+                image={item.image}
+                bg={item.bg}
+                onPress={() =>
+                  router.push({
+                    pathname:
+                      "/categoria/[id]",
 
-          params: {
-            id: item.id,
-          },
-        })
-      }
-    />
-  ))}
-</ScrollView>
+                    params: {
+                      id: item.id,
+                    },
+                  })
+                }
+              />
+            ))}
+        </ScrollView>
 
-        {/* <View style={{ height: 120 }} /> */}
+        <View
+          style={{
+            height: spacing.xxl,
+          }}
+        />
       </ScrollView>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F7F8FA",
-    paddingTop: 10,
-  },
-
-
-
-
-
-  cartButton: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    backgroundColor: "#fff",
-
-    alignItems: "center",
-    justifyContent: "center",
-
-    position: "relative",
-
-    shadowColor: "#000",
-    shadowOpacity: 0.08,
-    shadowRadius: 10,
-
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-
-    elevation: 3,
-  },
-
-  cartIcon: {
-    fontSize: 20,
-  },
-
-  badge: {
-    position: "absolute",
-    top: -2,
-    right: -2,
-
-    backgroundColor: "#FACC15",
-
-    minWidth: 20,
-    height: 20,
-
-    borderRadius: 10,
-
-    alignItems: "center",
-    justifyContent: "center",
-
-    paddingHorizontal: 5,
-  },
-
-  badgeText: {
-    fontSize: 11,
-    fontWeight: "700",
-    color: "#1E3A8A",
-  },
-
-  orderCard: {
-    backgroundColor: "#fff",
-
-    marginHorizontal: 20,
-
-    borderRadius: 22,
-
-    padding: 18,
-
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-
-    marginBottom: 24,
-
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-
-    elevation: 2,
-  },
-
-  orderSmall: {
-    fontSize: 13,
-    color: "#666",
-  },
-
-  orderTitle: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#111",
-    marginVertical: 4,
-  },
-
-  orderArrow: {
-    fontSize: 24,
-    color: "#1E3A8A",
-  },
-
   promotionsContainer: {
-    paddingLeft: 20,
-    paddingRight: 5,
-    marginBottom: 35,
+    paddingLeft:
+      layout.screenPadding,
+
+    paddingRight: spacing.sm,
+
+    marginBottom:
+      layout.sectionSpacing,
   },
 
   sectionHeader: {
     flexDirection: "row",
-    justifyContent: "space-between",
+
+    justifyContent:
+      "space-between",
+
     alignItems: "center",
 
-    paddingHorizontal: 20,
+    paddingHorizontal:
+      layout.screenPadding,
 
-    marginBottom: 18,
+    marginBottom: spacing.lg,
   },
 
   sectionTitle: {
-    fontSize: 28,
-    fontWeight: "800",
-    color: "#111",
+    ...typography.title,
+
+    color: colors.text,
   },
 
   seeMore: {
     fontSize: 15,
-    color: "#1E3A8A",
+
+    color: colors.primary,
+
     fontWeight: "700",
   },
 
   horizontalContent: {
-    paddingLeft: 20,
-    paddingRight: 5,
-    marginBottom: 35,
+    paddingLeft:
+      layout.screenPadding,
+
+    paddingRight: spacing.sm,
+
+    marginBottom:
+      layout.sectionSpacing,
   },
 });

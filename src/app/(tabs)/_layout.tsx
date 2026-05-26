@@ -77,7 +77,18 @@ export default function TabsLayout() {
     href: null,
   }}
 />
-
+   <Tabs.Screen
+  name="marca/[id]"
+  options={{
+    href: null,
+  }}
+/>
+   <Tabs.Screen
+  name="carrito/index"
+  options={{
+    href: null,
+  }}
+/>
     </Tabs>
   );
 }

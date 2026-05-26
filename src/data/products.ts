@@ -9,7 +9,7 @@ export const products = [
     description:
       "Gaseosa Coca Cola sabor original en presentación retornable de 2.25 litros. Ideal para compartir en almuerzos, reuniones y comidas familiares. Bebida refrescante con el sabor clásico de siempre.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6R85vgVrqqVjd3JrPtoYtMpqiGzmUX7ciVQ&s",
 
     price: 3500,
     oldPrice: 4200,
@@ -26,7 +26,7 @@ export const products = [
     description:
       "Gaseosa Pepsi descartable de 1.5 litros con sabor intenso y refrescante. Perfecta para acompañar comidas, snacks o disfrutar bien fría en cualquier momento del día.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://casaomarynietos.com.ar/wp-content/uploads/2025/03/376545-800-auto.png",
 
     price: 2900,
     offer: false,
@@ -42,7 +42,7 @@ export const products = [
     description:
       "Papas fritas Lays clásicas crocantes y livianas. Elaboradas con papas seleccionadas y sal justa para disfrutar en reuniones, picadas o como snack diario.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://arcordiezb2c.vteximg.com.br/arquivos/ids/178970/Papas-Fritas-Clasicas-Lays-230-Gr-1-16959.jpg?v=638270409665500000",
 
     price: 1800,
     offer: true,
@@ -58,7 +58,7 @@ export const products = [
     description:
       "Galletitas Oreo rellenas sabor vainilla con el clásico sabor dulce y crocante. Ideales para meriendas, postres o acompañar café y leche.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDC3ezKHigVX2hZDaJ6ptSwaTm--Wdxw6aOA&s",
 
     price: 2100,
     offer: false,
@@ -74,7 +74,7 @@ export const products = [
     description:
       "Detergente líquido Ariel de alta limpieza para ropa. Ayuda a remover manchas difíciles y deja una fragancia fresca y duradera.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrLqkXiJi55ZYeYMbDDlAjhWKU9j98OySrXg&s",
 
     price: 4600,
     oldPrice: 5200,
@@ -87,11 +87,11 @@ export const products = [
 
   {
     id: "lavandina",
-    name: "Lavandina Premium",
+    name: "Ayudin Lavandina x 2 lts",
     description:
       "Lavandina concentrada multiuso para limpieza profunda y desinfección de superficies, pisos y baños. Excelente rendimiento para el hogar.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://distriflash.com.ar/wp-content/uploads/2018/10/0718-AYUDIN-LAVANDINA-CLASICA-x2ltr.jpg",
 
     price: 2500,
     offer: false,
@@ -102,11 +102,11 @@ export const products = [
 
   {
     id: "cafe",
-    name: "Café Instantáneo",
+    name: "Cafe Instantane Nescafe Dolca 100 g",
     description:
       "Café instantáneo premium con aroma intenso y sabor equilibrado. Fácil de preparar y perfecto para comenzar el día con energía.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://shop.nestle.com.ar/cdn/shop/files/8445291082113.png?v=1771205649&width=1946",
 
     price: 6700,
     oldPrice: 7600,
@@ -119,11 +119,11 @@ export const products = [
 
   {
     id: "cereal",
-    name: "Cereal de Chocolate",
+    name: "Cereal Nesfit 220 g",
     description:
       "Cereal crocante sabor chocolate ideal para desayunos y meriendas. Fuente de energía para toda la familia con sabor irresistible.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://http2.mlstatic.com/D_NQ_NP_937088-MLA92776665435_092025-O.webp",
 
     price: 3200,
     offer: false,
@@ -139,7 +139,7 @@ export const products = [
     description:
       "Alimento premium para perros adultos con nutrientes esenciales, proteínas y vitaminas que ayudan a mantener la salud y energía diaria.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://chihuahua.com.ar/wp-content/uploads/2025/03/dog-chow-salsa-perro-adulto-1.png",
 
     price: 8900,
     oldPrice: 9800,
@@ -156,12 +156,12 @@ export const products = [
     description:
       "Balanceado completo sabor salmón para gatos adultos. Fórmula rica en proteínas y minerales para una alimentación saludable.",
     image:
-      "https://placehold.co/400x400/png",
+      "https://w7.pngwing.com/pngs/84/576/png-transparent-purina-cat-chow-complete-dry-cat-food-dog-cat-food-animals-pet.png",
 
     price: 7900,
     offer: false,
     stock: true,
-    brandId: "catchow",
+    brandId: "dogchow",
 
     categoryId: "mascotas",
   },
@@ -268,23 +268,23 @@ export const products = [
     categoryId: "higiene",
   },
 
-  {
-    id: "panales",
-    name: "Pañales Huggies",
-    description:
-      "Pañales descartables talle grande con máxima absorción y protección prolongada para mayor comodidad del bebé.",
-    image:
-      "https://placehold.co/400x400/png",
+{
+  id: "colgate-total",
+  name: "Colgate Total 12 Crema Dental 180g",
+   description:
+      "Dentifrico.",
+  image:
+    "https://farmaciasdelpueblo.vtexassets.com/arquivos/ids/189458/Colgate-Pasta-dental-Colgate-Total-Professional-Whitening-x-140-gr-7509546688367_img1.png?v=638509686224300000",
 
-    price: 13500,
-    oldPrice: 14900,
-    offer: true,
-    stock: true,
-    brandId: "huggies",
+  price: 7500,
+  oldPrice: 10900,
+  offer: true,
+  stock: true,
 
-    categoryId: "bebes",
-  },
+  brandId: "colgate",
 
+  categoryId: "higiene",
+},
   {
     id: "toallitas",
     name: "Toallitas Húmedas",

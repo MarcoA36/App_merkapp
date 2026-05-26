@@ -1,52 +1,56 @@
-// app/(tabs)/categorias.jsx
-
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Image,
 } from "react-native";
+
 import { router } from "expo-router";
+
 import { categories } from "@/data/categories";
-import CategoryCircle from "@/components/CategoryCircle";
+
+import CategoryCircle from "@/components/Category/CategoryCircle";
+
+import SectionHeader from "@/components/Headers/SectionHeader";
+
+import Screen from "@/components/Layout/Screen";
+
+import {
+  colors,
+  layout,
+  spacing,
+  typography,
+} from "@/theme/theme";
 
 export default function CategoriasScreen() {
   return (
-    <View style={styles.container}>
-      {/* HEADER */}
-
-      <View style={styles.header}>
-        <Text style={styles.title}>Categorías</Text>
-
-        <TouchableOpacity style={styles.cartButton}>
-          <Text style={styles.cartIcon}>🛒</Text>
-
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>11</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-
-      {/* GRID */}
+    <Screen backgroundColor={colors.white}>
+      <SectionHeader title="Categorias" />
 
       <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={
+          false
+        }
+        contentContainerStyle={
+          styles.content
+        }
       >
-        <Text style={styles.allCategories}>Todas las categorías</Text>
+        <Text style={styles.allCategories}>
+          Todas las categorías
+        </Text>
 
         <View style={styles.grid}>
           {categories.map((item) => (
             <CategoryCircle
-                key={item.id}
+              key={item.id}
               title={item.title}
               image={item.image}
               bg={item.bg}
               onPress={() =>
                 router.push({
-                  pathname: "/categoria/[id]",
+                  pathname:
+                    "/categoria/[id]",
+
                   params: {
                     id: item.id,
                     name: item.title,
@@ -57,111 +61,36 @@ export default function CategoriasScreen() {
           ))}
         </View>
 
-        <View style={{ height: 120 }} />
+        <View
+          style={{
+            height: 120,
+          }}
+        />
       </ScrollView>
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 18,
-  },
-
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
-    paddingHorizontal: 20,
-    marginBottom: 20,
-  },
-
-  title: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#333",
-  },
-
-  cartButton: {
-    position: "absolute",
-    right: 20,
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    backgroundColor: "#2E3192",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  cartIcon: {
-    fontSize: 18,
-    color: "#fff",
-  },
-
-  badge: {
-    position: "absolute",
-    top: -4,
-    right: -4,
-    backgroundColor: "#FACC15",
-    minWidth: 18,
-    height: 18,
-    borderRadius: 9,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 4,
-  },
-
-  badgeText: {
-    fontSize: 10,
-    fontWeight: "700",
-    color: "#222",
-  },
-
   content: {
-    paddingHorizontal: 18,
+    paddingHorizontal:
+      layout.screenPadding,
   },
 
   allCategories: {
-    fontSize: 28,
-    fontWeight: "800",
-    color: "#2E3192",
-    marginBottom: 22,
+    ...typography.title,
+
+    color: colors.primary,
+
+    marginBottom: spacing.xl,
   },
 
   grid: {
     flexDirection: "row",
+
     flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
 
-  categoryItem: {
-    width: "31%",
-    marginBottom: 28,
-    alignItems: "center",
-  },
-
-  imageContainer: {
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
-  },
-
-  image: {
-    width: 58,
-    height: 58,
-  },
-
-  categoryText: {
-    fontSize: 14,
-    textAlign: "center",
-    color: "#3A2C7B",
-    fontWeight: "600",
-    lineHeight: 18,
+    justifyContent:
+      "space-between",
   },
 });
