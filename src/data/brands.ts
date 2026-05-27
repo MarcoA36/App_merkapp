@@ -76,4 +76,5 @@ export const brands = [
     name: "Colgate",
     image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Colgate_logo_red.svg",
   },
+
 ];

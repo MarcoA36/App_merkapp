@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
     paddingHorizontal:
       layout.screenPadding,
 
-    marginVertical: spacing.lg,
+    marginVertical: spacing.md,
   },
 
   sectionTitle: {
-    ...typography.title,
+    ...typography.subtitle,
 
     color: colors.text,
   },

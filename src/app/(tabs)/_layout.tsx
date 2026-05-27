@@ -64,7 +64,7 @@ export default function TabsLayout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="categoria/[id]"
         options={{
           href: null,
@@ -87,7 +87,7 @@ export default function TabsLayout() {
         options={{
           href: null,
         }}
-      /> */}
+      />
     </Tabs>
   );
 }

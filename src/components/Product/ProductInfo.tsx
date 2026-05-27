@@ -1,8 +1,104 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+// } from "react-native";
+
+// type Props = {
+//   name: string;
+//   unitPrice: number;
+//   subtotal: number;
+//   children: React.ReactNode;
+// };
+
+// export default function ProductInfo({
+//   name,
+//   unitPrice,
+//   subtotal,
+//   children,
+// }: Props) {
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.name}>
+//         {name}
+//       </Text>
+
+//       <Text style={styles.unitPrice}>
+//         Precio por unidad S/{unitPrice}
+//       </Text>
+
+//       {children}
+
+//       <Text style={styles.totalLabel}>
+//         Subtotal
+//       </Text>
+
+//       <Text style={styles.total}>
+//         S/{subtotal}
+//       </Text>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     paddingHorizontal: 20,
+//   },
+
+//   name: {
+//     fontSize: 28,
+//     fontWeight: "800",
+//     color: "#222",
+//     marginBottom: 12,
+//   },
+
+//   unitPrice: {
+//     fontSize: 16,
+//     color: "#777",
+//     marginBottom: 20,
+//   },
+
+//   totalLabel: {
+//     fontSize: 14,
+//     color: "#999",
+//     marginBottom: 4,
+//   },
+
+//   total: {
+//     fontSize: 26,
+//     fontWeight: "700",
+//     color: "#222",
+//     marginBottom: 24,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { View, Text, StyleSheet } from "react-native";
+import { colors, spacing, layout, typography } from "@/theme/theme";
 
 type Props = {
   name: string;
@@ -23,51 +119,69 @@ export default function ProductInfo({
         {name}
       </Text>
 
+      <Text style={styles.unitText}>
+        1 unidad
+      </Text>
+      
       <Text style={styles.unitPrice}>
-        Precio por unidad S/{unitPrice}
+        Precio por unidad S/{unitPrice.toFixed(2)}
       </Text>
 
-      {children}
+      {/* Contenedor Fila: Alinea el subtotal a la izquierda y el selector a la derecha */}
+      <View style={styles.subtotalRow}>
+        <View>
+          <Text style={styles.totalLabel}>
+            Subtotal
+          </Text>
+          <Text style={styles.total}>
+            S/{subtotal.toFixed(2)}
+          </Text>
+        </View>
 
-      <Text style={styles.totalLabel}>
-        Subtotal
-      </Text>
-
-      <Text style={styles.total}>
-        S/{subtotal}
-      </Text>
+        {/* El selector de cantidad se renderiza acá */}
+        <View>
+          {children}
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: layout.screenPadding,
   },
-
   name: {
-    fontSize: 28,
-    fontWeight: "800",
-    color: "#222",
-    marginBottom: 12,
-  },
-
-  unitPrice: {
-    fontSize: 16,
-    color: "#777",
-    marginBottom: 20,
-  },
-
-  totalLabel: {
-    fontSize: 14,
-    color: "#999",
-    marginBottom: 4,
-  },
-
-  total: {
-    fontSize: 26,
+    // 28 era muy grande comparado con la foto, lo ajustamos a algo más cercano
+    fontSize: 20, 
     fontWeight: "700",
-    color: "#222",
-    marginBottom: 24,
+    color: colors.text,
+    marginBottom: spacing.md,
+  },
+  unitText: {
+    ...typography.body,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  unitPrice: {
+    ...typography.body,
+    color: colors.textSecondary,
+    marginBottom: spacing.lg,
+  },
+  subtotalRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center", // Centra verticalmente el texto y el botón
+    marginBottom: spacing.xl,
+  },
+  totalLabel: {
+    ...typography.small,
+    color: colors.textSecondary,
+    marginBottom: spacing.xs,
+  },
+  total: {
+    ...typography.title,
+    fontWeight: "700", // Sobreescribimos el 500 del theme para darle más peso
+    color: colors.text,
   },
 });

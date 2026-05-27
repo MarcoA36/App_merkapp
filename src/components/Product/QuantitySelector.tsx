@@ -1,9 +1,5 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { colors, radius, typography, spacing } from "@/theme/theme";
 
 type Props = {
   quantity: number;
@@ -17,25 +13,34 @@ export default function QuantitySelector({
   onIncrease,
 }: Props) {
   return (
-    <View style={styles.row}>
+    <View style={styles.container}>
+      {/* Botón de restar */}
       <TouchableOpacity
         style={styles.button}
         onPress={onDecrease}
+        disabled={quantity <= 1} // Deshabilita el toque si es 1
+        activeOpacity={0.7}
       >
-        <Text style={styles.text}>
+        <Text style={[
+          styles.iconText, 
+          quantity <= 1 && styles.iconDisabled // Cambia el color si está en 1
+        ]}>
           −
         </Text>
       </TouchableOpacity>
 
+      {/* Cantidad */}
       <Text style={styles.value}>
         {quantity}
       </Text>
 
+      {/* Botón de sumar */}
       <TouchableOpacity
         style={styles.button}
         onPress={onIncrease}
+        activeOpacity={0.7}
       >
-        <Text style={styles.text}>
+        <Text style={styles.iconText}>
           +
         </Text>
       </TouchableOpacity>
@@ -44,31 +49,40 @@ export default function QuantitySelector({
 }
 
 const styles = StyleSheet.create({
-  row: {
+  container: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 20,
-    marginBottom: 24,
+    backgroundColor: colors.background, // Usa el gris clarito de tu theme
+    borderRadius: radius.full, // Le da esa forma de píldora
+    paddingHorizontal: spacing.xs,
+    paddingVertical: spacing.xs,
   },
-
+  
   button: {
-    width: 42,
-    height: 42,
-    borderRadius: 12,
-    backgroundColor: "#F5F2FF",
+    width: 36,
+    height: 36,
     alignItems: "center",
     justifyContent: "center",
   },
 
-  text: {
-    fontSize: 28,
-    color: "#4B33CC",
+  iconText: {
+    fontSize: 24,
+    // Usamos tu color primario para que los +/- se vean clickeables
+    color: colors.primary, 
     fontWeight: "400",
+    marginTop: -2, // Pequeño truco para centrar ópticamente los signos +/- en Android/iOS
+  },
+
+  iconDisabled: {
+    color: colors.border, // Se vuelve gris clarito cuando no podés restar más
   },
 
   value: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#222",
+    ...typography.body,
+    fontWeight: "600", // Un poco más de peso para que resalte
+    color: colors.text,
+    minWidth: 28, // Ancho mínimo para que si pasás a "10" no empuje los botones a los costados
+    textAlign: "center",
+    marginHorizontal: spacing.xs,
   },
 });

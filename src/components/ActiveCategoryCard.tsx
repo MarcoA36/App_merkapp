@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 type Props = {
   title: string;
@@ -11,11 +6,7 @@ type Props = {
   bg: string;
 };
 
-export default function ActiveCategoryCard({
-  title,
-  image,
-  bg,
-}: Props) {
+export default function ActiveCategoryCard({ title, image, bg }: Props) {
   return (
     <View
       style={[
@@ -25,14 +16,8 @@ export default function ActiveCategoryCard({
         },
       ]}
     >
-      <Image
-        source={{ uri: image }}
-        style={styles.icon}
-      />
-
-      <Text style={styles.title}>
-        {title}
-      </Text>
+      <Image source={{ uri: image }} style={styles.icon} resizeMode="contain" />
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 }
@@ -40,23 +25,21 @@ export default function ActiveCategoryCard({
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
-    borderRadius: 14,
-    paddingVertical: 14,
-    paddingHorizontal: 14,
+    borderRadius: 16, // Ligeramente más redondeado
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    marginBottom: 18,
+    gap: 12,
+    marginBottom: 20,
   },
-
   icon: {
-    width: 24,
-    height: 24,
+    width: 28,
+    height: 28,
   },
-
   title: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#333",
+    color: "#2E3A59", // Tono azul oscuro/morado similar al de la imagen
   },
 });

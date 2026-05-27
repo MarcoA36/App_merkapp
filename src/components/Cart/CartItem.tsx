@@ -35,30 +35,35 @@ export default function CartItem({
             {item.name}
           </Text>
 
-    <TouchableOpacity
-  onPress={onDelete}
-  style={styles.deleteButton}
-  activeOpacity={0.7}
->
-  <Trash2 size={18} color="#E53935" />
-</TouchableOpacity>
+          <TouchableOpacity
+            onPress={onDelete}
+            style={styles.deleteButton}
+            activeOpacity={0.7}
+          >
+            <Trash2 size={20} color="#555" />
+          </TouchableOpacity>
         </View>
 
+        {/* Textos descriptivos de la imagen */}
+        <Text style={styles.unitDetail}>1x6 unidades</Text>
         <Text style={styles.unitPrice}>
-          S/{item.price} c/u
+          Precio por pack <Text style={styles.boldPrice}>S/{item.price.toFixed(2)}</Text>
         </Text>
 
         <View style={styles.bottomRow}>
+          <Text style={styles.subtotalLabel}>
+            Subtotal{" "}
+            <Text style={styles.subtotalValue}>
+              S/{(item.price * item.quantity).toFixed(2)}
+            </Text>
+          </Text>
+
           <QuantitySelector
             quantity={item.quantity}
             onIncrease={onIncrease}
             onDecrease={onDecrease}
-            disableDecrease={item.quantity === 1}
+            onDelete={onDelete} // Pasamos onDelete para cuando sea 1
           />
-
-          <Text style={styles.subtotal}>
-            S/{item.price * item.quantity}
-          </Text>
         </View>
       </View>
     </View>
@@ -68,70 +73,63 @@ export default function CartItem({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
-
-    borderRadius: 24,
-
-    padding: 14,
-
+    borderRadius: 20,
+    padding: 16,
     flexDirection: "row",
-
-    marginBottom: 18,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#F0F0F0",
   },
-
   image: {
-    width: 92,
-    height: 92,
+    width: 70,
+    height: 100,
   },
-
   info: {
     flex: 1,
     marginLeft: 14,
   },
-
   topRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "flex-start",
   },
-
   name: {
     flex: 1,
-
-    fontSize: 16,
-    fontWeight: "700",
-    color: "#111",
-
-    marginRight: 12,
-  },
-
-  delete: {
-    fontSize: 20,
+    fontSize: 15,
+    fontWeight: "500",
+    color: "#333",
+    marginRight: 8,
   },
   deleteButton: {
-  width: 32,
-  height: 32,
-  borderRadius: 16,
-  alignItems: "center",
-  justifyContent: "center",
-},
-
-  unitPrice: {
-    marginTop: 6,
-
-    fontSize: 14,
-    color: "#777",
+    padding: 4,
   },
-
+  unitDetail: {
+    marginTop: 4,
+    fontSize: 13,
+    color: "#888",
+  },
+  unitPrice: {
+    marginTop: 2,
+    fontSize: 13,
+    color: "#888",
+  },
+  boldPrice: {
+    fontWeight: "700",
+    color: "#333",
+  },
   bottomRow: {
-    marginTop: 16,
-
+    marginTop: 12,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-
-  subtotal: {
-    fontSize: 22,
-    fontWeight: "800",
+  subtotalLabel: {
+    fontSize: 13,
+    color: "#888",
+  },
+  subtotalValue: {
+    fontSize: 16,
+    fontWeight: "700",
     color: "#111",
   },
 });

@@ -96,4 +96,5 @@ export const categories = [
       "https://cdn-icons-png.flaticon.com/512/2922/2922561.png",
     bg: "#FCEBFF",
   },
+
 ];

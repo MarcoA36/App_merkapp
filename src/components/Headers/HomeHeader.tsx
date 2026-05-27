@@ -20,7 +20,7 @@ export default function HomeHeader() {
       </TouchableOpacity>
 
       <Text style={styles.logo}>
-        MERKAPP
+        
       </Text>
 
       <CartButton />

@@ -32,18 +32,20 @@ export default function BrandsSection() {
         contentContainerStyle={styles.horizontalContent}
       >
         {brands.map((brand) => (
-          <HomeBrandCard
-            key={brand.id}
-            image={brand.image}
-            onPress={() =>
-              router.push({
-                pathname: "/marca/[id]",
-                params: {
-                  id: brand.id,
-                },
-              })
-            }
-          />
+      <BrandCard
+  key={brand.id}
+  name={brand.name}
+  image={brand.image}
+  showName={false}
+  onPress={() =>
+    router.push({
+      pathname: "/marca/[id]",
+      params: {
+        id: brand.id,
+      },
+    })
+  }
+/>
         ))}
       </ScrollView>
     </>
@@ -60,11 +62,11 @@ const styles = StyleSheet.create({
 
     paddingHorizontal: layout.screenPadding,
 
-    marginVertical: spacing.lg,
+    marginVertical: spacing.md,
   },
 
   sectionTitle: {
-    ...typography.title,
+    ...typography.subtitle,
 
     color: colors.text,
   },

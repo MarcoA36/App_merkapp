@@ -56,13 +56,13 @@ export const radius = {
 export const typography = {
 
   title: {
-    fontSize: 26,
-    fontWeight: "700" as const,
+    fontSize: 24,
+    fontWeight: "500" as const,
   },
 
   subtitle: {
-    fontSize: 22,
-    fontWeight: "700" as const,
+    fontSize: 20,
+    fontWeight: "500" as const,
   },
 
   body: {

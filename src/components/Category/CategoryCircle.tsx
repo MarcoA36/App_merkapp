@@ -1,10 +1,5 @@
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
+import { colors, typography, spacing } from "@/theme/theme";
 
 type Props = {
   title: string;
@@ -16,7 +11,7 @@ type Props = {
 export default function CategoryCircle({
   title,
   image,
-  bg = "#fff",
+  bg = "#FFF9E6",
   onPress,
 }: Props) {
   return (
@@ -25,20 +20,14 @@ export default function CategoryCircle({
       style={styles.container}
       onPress={onPress}
     >
-      <View
-        style={[
-          styles.circle,
-          { backgroundColor: bg },
-        ]}
-      >
+      <View style={[styles.circle, { backgroundColor: bg }]}>
         <Image
           source={{ uri: image }}
           style={styles.image}
           resizeMode="contain"
         />
       </View>
-
-      <Text style={styles.text}>
+      <Text style={styles.text} numberOfLines={2}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -48,39 +37,30 @@ export default function CategoryCircle({
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    width: 95,
-  },
-
-  circle: {
     width: 90,
-    height: 90,
-    borderRadius: 45,
-
+  },
+  circle: {
+    width: 86,
+    height: 86,
+    borderRadius: 43,
     alignItems: "center",
     justifyContent: "center",
-
     shadowColor: "#000",
-    shadowOpacity: 0.04,
-    shadowRadius: 8,
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
     elevation: 2,
-    marginBottom: 10,
+    marginBottom: spacing.sm,
   },
-
   image: {
-    width: 58,
-    height: 58,
+    width: 54,
+    height: 54,
   },
-
   text: {
-    fontSize: 14,
+    ...typography.small,
     textAlign: "center",
-    color: "#3A2C7B",
+    color: colors.primary,
     fontWeight: "600",
-    lineHeight: 18,
+    lineHeight: 16,
   },
 });

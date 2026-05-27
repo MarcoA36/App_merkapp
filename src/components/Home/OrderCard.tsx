@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
       "space-between",
     alignItems: "center",
 
-    marginBottom: spacing.md,
+    marginVertical: spacing.sm,
   },
 
   left: {
