@@ -7,24 +7,21 @@ import Screen from "@/components/Layout/Screen";
 import { colors, layout, spacing, typography } from "@/theme/theme";
 
 export default function CategoriasScreen() {
-  // 1. Leemos el ancho de la pantalla (funciona en vivo al girar el celu o en tablets)
   const { width } = useWindowDimensions();
-
-  // 2. Ancho real usable (pantalla total menos los dos paddings laterales)
+  
+  // Ancho real usable (pantalla total menos paddings laterales)
   const availableWidth = width - (layout.screenPadding * 2);
 
-  // 3. Definimos cuánto mide tu círculo y un gap mínimo aceptable
-  const itemWidth = 90; // El ancho que le pusimos a CategoryCircle
+  const itemWidth = 90; 
   const minGap = 16; 
 
-  // 4. MATEMÁTICA: ¿Cuántas columnas entran perfectamente en el espacio disponible?
-  // En un celu darán 3 o 4. En una tablet pueden dar 6 u 8.
-  const numColumns = Math.max(3, Math.floor((availableWidth + minGap) / (itemWidth + minGap)));
+  // Calculamos cuántas columnas entran (mínimo 2 para pantallas muy chicas)
+  const numColumns = Math.max(2, Math.floor((availableWidth + minGap) / (itemWidth + minGap)));
 
-  // 5. MATEMÁTICA: Calculamos la separación exacta para que el primero y el último toquen los bordes
+  // CRÍTICO: Usamos Math.floor() para evitar desbordes por decimales.
   const exactGap = numColumns > 1 
-    ? (availableWidth - (numColumns * itemWidth)) / (numColumns - 1) 
-    : 0;
+    ? Math.floor((availableWidth - (numColumns * itemWidth)) / (numColumns - 1)) 
+    : minGap;
 
   return (
     <Screen backgroundColor={colors.white}>
@@ -36,10 +33,14 @@ export default function CategoriasScreen() {
       >
         <Text style={styles.allCategories}>Todas las categorías</Text>
 
-        {/* Le pasamos el gap dinámico directamente al estilo de la grilla */}
-        <View style={[styles.grid, { gap: exactGap }]}>
+        <View style={[
+          styles.grid, 
+          { 
+            columnGap: exactGap, // Separación dinámica horizontal 
+            rowGap: spacing.lg || 24 // Separación vertical fija para mantener consistencia
+          }
+        ]}>
           {categories.map((item) => (
-            // Ahora el ítem tiene el ancho estricto de 90px, ni más ni menos
             <View key={item.id} style={{ width: itemWidth }}>
               <CategoryCircle
                 title={item.title}
@@ -78,7 +79,8 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    // Eliminamos el alignItems y el justifyContent.
-    // El gap calculado hace todo el trabajo de alineación.
+    // Flex-start asegura que, si la última fila tiene menos elementos, se alineen desde la izquierda
+    // pero si solo entran 2 en pantallas minúsculas, el exactGap simulará que están bien distribuidos.
+    justifyContent: "flex-start", 
   },
 });

@@ -23,8 +23,9 @@ export default function CartItem({
 }: Props) {
   return (
     <View style={styles.card}>
+      {/* 👇 CORRECCIÓN AQUÍ: Agregamos {{ uri: item.image }} */}
       <Image
-        source={item.image}
+        source={{ uri: item.image }} 
         style={styles.image}
         resizeMode="contain"
       />
@@ -62,7 +63,7 @@ export default function CartItem({
             quantity={item.quantity}
             onIncrease={onIncrease}
             onDecrease={onDecrease}
-            onDelete={onDelete} // Pasamos onDelete para cuando sea 1
+            onDelete={onDelete}
           />
         </View>
       </View>
