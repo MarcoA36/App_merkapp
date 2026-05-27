@@ -1,110 +1,14 @@
-// // components/PromotionBanner.tsx
-
-// import {
-//   Image,
-//   StyleSheet,
-//   TouchableOpacity,
-// } from "react-native";
-
-// type Props = {
-//   image: string;
-//   onPress?: () => void;
-// };
-
-// export default function PromotionBanner({
-//   image,
-//   onPress,
-// }: Props) {
-//   return (
-//     <TouchableOpacity
-//       activeOpacity={0.9}
-//       onPress={onPress}
-//     >
-//       <Image
-//         source={{ uri: image }}
-//         style={styles.banner}
-//       />
-//     </TouchableOpacity>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   banner: {
-//     width: 300,
-//     height: 180,
-//     borderRadius: 28,
-//     marginRight: 15,
-//     backgroundColor: "#ddd",
-//   },
-// });
-// components/PromotionBanner.tsx
-
-// import {
-//   Image,
-//   StyleSheet,
-//   TouchableOpacity,
-//   ImageSourcePropType,
-// } from "react-native";
-
-// type Props = {
-//   image: ImageSourcePropType;
-//   onPress?: () => void;
-// };
-
-// export default function PromotionBanner({
-//   image,
-//   onPress,
-// }: Props) {
-//   return (
-//     <TouchableOpacity
-//       activeOpacity={0.9}
-//       onPress={onPress}
-//     >
-//       <Image
-//         source={image}
-//         style={styles.banner}
-//       />
-//     </TouchableOpacity>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   banner: {
-//     width: 300,
-//     height: 180,
-//     borderRadius: 28,
-//     marginRight: 15,
-//     backgroundColor: "#ddd",
-//   },
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// components/PromotionBanner.tsx
 
 import {
+  Dimensions,
   Image,
+  ImageSourcePropType,
   StyleSheet,
   TouchableOpacity,
-  ImageSourcePropType,
+  View,
 } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 type Props = {
   image: ImageSourcePropType;
@@ -117,26 +21,47 @@ export default function PromotionBanner({
 }: Props) {
   return (
     <TouchableOpacity
-      activeOpacity={0.9}
+      activeOpacity={0.95}
       onPress={onPress}
+      style={styles.container}
     >
-      <Image
-        source={image}
-        style={styles.banner}
-        resizeMode="cover"
-      />
+      <View style={styles.card}>
+        <Image
+          source={image}
+          style={styles.banner}
+          resizeMode="cover"
+        />
+      </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginRight: 12,
+  },
+
+  card: {
+    borderRadius: 18,
+    overflow: "hidden",
+
+    backgroundColor: "#FFF",
+
+    shadowColor: "#000",
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+
+    elevation: 2,
+  },
+
   banner: {
-    width: 320,
-    height: 240,
+    width: width - 48,
+    height: 260,
 
-    borderRadius: 28,
-    marginRight: 15,
-
-    backgroundColor: "#ddd",
+    backgroundColor: "#E5E5E5",
   },
 });

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-
+import { Trash2 } from "lucide-react-native";
 import QuantitySelector from "./QuantitySelector";
 
 type Props = {
@@ -35,9 +35,13 @@ export default function CartItem({
             {item.name}
           </Text>
 
-          <TouchableOpacity onPress={onDelete}>
-            <Text style={styles.delete}>🗑</Text>
-          </TouchableOpacity>
+    <TouchableOpacity
+  onPress={onDelete}
+  style={styles.deleteButton}
+  activeOpacity={0.7}
+>
+  <Trash2 size={18} color="#E53935" />
+</TouchableOpacity>
         </View>
 
         <Text style={styles.unitPrice}>
@@ -102,6 +106,13 @@ const styles = StyleSheet.create({
   delete: {
     fontSize: 20,
   },
+  deleteButton: {
+  width: 32,
+  height: 32,
+  borderRadius: 16,
+  alignItems: "center",
+  justifyContent: "center",
+},
 
   unitPrice: {
     marginTop: 6,
