@@ -1,100 +1,36 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
-
+import { View, Text, StyleSheet } from "react-native";
 import { useCartStore } from "@/store/cartStore";
+import { spacing } from "@/theme/theme";
 
 export default function CartSummary() {
-  const totalPrice = useCartStore(
-    (s) => s.totalPrice()
-  );
-
-  const shipping = 0;
+  const totalPrice = useCartStore((s) => s.totalPrice());
 
   return (
-    <View style={styles.card}>
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          Subtotal
-        </Text>
-
-        <Text style={styles.value}>
-          S/{totalPrice}
-        </Text>
-      </View>
-
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          Envío
-        </Text>
-
-        <Text style={styles.value}>
-          Gratis
-        </Text>
-      </View>
-
-      <View style={styles.divider} />
-
-      <View style={styles.row}>
-        <Text style={styles.totalLabel}>
-          Total
-        </Text>
-
-        <Text style={styles.totalValue}>
-          S/{totalPrice + shipping}
-        </Text>
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.label}>Subtotal:</Text>
+      <Text style={styles.value}>S/{totalPrice.toFixed(2)}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#fff",
-
-    borderRadius: 24,
-
-    padding: 20,
-
-    marginTop: 6,
-  },
-
-  row: {
+  container: {
     flexDirection: "row",
     justifyContent: "space-between",
-
-    marginBottom: 14,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 24,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
   },
-
   label: {
-    fontSize: 16,
-    color: "#666",
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#111",
   },
-
   value: {
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 20,
+    fontWeight: "700",
     color: "#111",
-  },
-
-  divider: {
-    height: 1,
-    backgroundColor: "#EEE",
-
-    marginVertical: 6,
-  },
-
-  totalLabel: {
-    fontSize: 22,
-    fontWeight: "800",
-    color: "#111",
-  },
-
-  totalValue: {
-    fontSize: 24,
-    fontWeight: "800",
-    color: "#1E3A8A",
   },
 });

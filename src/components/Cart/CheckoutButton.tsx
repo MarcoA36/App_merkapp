@@ -51,6 +51,7 @@
 // });
 // components/Cart/CheckoutButton.tsx
 
+import { spacing } from "@/theme/theme";
 import {
   TouchableOpacity,
   Text,
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
 
     justifyContent: "center",
 
-    marginTop: 18,
+    marginTop: spacing.md,
   },
 
   text: {
