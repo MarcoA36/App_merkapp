@@ -79,14 +79,6 @@ export const categories = [
     bg: "#E6F7FF",
   },
 
-  {
-    id: "bebes",
-    departamentId: "farmacia",
-    title: "Bebés",
-    image:
-      "https://cdn-icons-png.flaticon.com/512/3082/3082038.png",
-    bg: "#FFF5F7",
-  },
 
   {
     id: "dermocosmetica",

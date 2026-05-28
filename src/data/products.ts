@@ -297,7 +297,7 @@ export const products = [
     offer: false,
     stock: true,
     brandId: "huggies",
-    categoryId: "bebes",
+    categoryId: "dermocosmetica",
   },
 
   {
