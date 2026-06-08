@@ -10,6 +10,7 @@ import { colors, spacing } from "@/theme/theme";
 import BrandsSection from "@/components/Home/BrandsSection";
 import CategoriesSection from "@/components/Home/CategorySection";
 import PromotionsSection from "@/components/Home/PromotionSection";
+import SideDrawer from "@/components/Navigation/SideDrawer";
 
 export default function HomeScreen() {
   return (
@@ -28,6 +29,8 @@ export default function HomeScreen() {
           }}
         />
       </ScrollView>
+
+      <SideDrawer/>
     </Screen>
   );
 }

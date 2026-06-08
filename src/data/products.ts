@@ -18,6 +18,11 @@ export const products = [
     brandId: "coca-cola",
 
     categoryId: "bebidas",
+    priceTiers: [
+      { min: 1, max: 5, price: 3500 },
+      { min: 6, max: 10, price: 3250 },
+      { min: 11, max: null, price: 3100 }
+    ]
   },
 
   {
@@ -34,6 +39,11 @@ export const products = [
     brandId: "pepsi",
 
     categoryId: "bebidas",
+    priceTiers: [
+      { min: 1, max: 5, price: 2500 },
+      { min: 6, max: 10, price: 2250 },
+      { min: 11, max: null, price: 2100 }
+    ]
   },
 
   {
@@ -314,6 +324,11 @@ export const products = [
     stock: true,
     brandId: "nivea",
     categoryId: "dermocosmetica",
+    priceTiers: [
+      { min: 1, max: 5, price: 3500 },
+      { min: 6, max: 10, price: 3200 },
+      { min: 11, max: null, price: 3000 } // De 11 a más unidades
+    ]
   },
 
   {
