@@ -99,6 +99,31 @@ export default function TabsLayout() {
     href: null,
   }}
 />
+<Tabs.Screen
+  name="ubicaciones"
+  options={{
+    href: null,
+  }}
+/>
+<Tabs.Screen
+  name="privacidad"
+  options={{
+    href: null,
+  }}
+/>
+<Tabs.Screen
+  name="horario"
+  options={{
+    href: null,
+  }}
+/>
+<Tabs.Screen
+  name="reclamos"
+  options={{
+    href: null,
+  }}
+/>
+
     </Tabs>
   );
 }

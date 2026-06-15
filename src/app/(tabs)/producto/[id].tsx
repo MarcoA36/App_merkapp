@@ -26,7 +26,6 @@ export default function ProductoDetalle() {
 
   const hasPriceTiers = product.priceTiers && product.priceTiers.length > 0;
 
-  // Lógica dinámica para obtener el precio según el tramo seleccionado
   const getCurrentUnitPrice = () => {
     if (!hasPriceTiers) return product.price;
     
@@ -50,54 +49,51 @@ export default function ProductoDetalle() {
       <ScrollView showsVerticalScrollIndicator={false}>
         
         {/* ====================================================================
-           1. BLOQUE SUPERIOR: IMAGEN (CON O SIN COLUMNA DE PRECIOS X MAYOR)
+           1. BLOQUE SUPERIOR: IMAGEN (Siempre mantiene el mismo tamaño)
            ==================================================================== */}
-        {hasPriceTiers ? (
-          <View style={styles.imageTierRow}>
-            {/* Contenedor de la Imagen (Ocupa la mayor parte del ancho) */}
-            <View style={styles.imageColumn}>
-              <ProductImage 
-                image={product.image} 
-                containerStyle={styles.splitImageContainer} 
-              />
-            </View>
-
-            {/* Franja Derecha: Tabla compacta de Precios por Mayor */}
-            <View style={styles.tierColumn}>
-              <Text style={styles.tierHeaderTitle}>Precios x Mayor</Text>
-              <View style={styles.tierTable}>
-                {product.priceTiers!.map((tier, index) => {
-                  const isCurrentTier =
-                    quantity >= tier.min && (tier.max === null ? true : quantity <= tier.max);
-
-                  return (
-                    <View 
-                      key={index} 
-                      style={[styles.tierRow, isCurrentTier && styles.activeTierRow]}
-                    >
-                      <Text style={[styles.tierRangeText, isCurrentTier && styles.activeTierText]}>
-                        {tier.max ? `${tier.min}-${tier.max}` : `${tier.min}+`} u.
-                      </Text>
-                      <Text style={[styles.tierPriceText, isCurrentTier && styles.activeTierText]}>
-                        ${tier.price}
-                      </Text>
-                    </View>
-                  );
-                })}
-              </View>
-            </View>
-          </View>
-        ) : (
-          /* Si no tiene escala de precios, se ve la imagen común a pantalla completa */
+        <View style={styles.imageContainer}>
           <ProductImage image={product.image} />
+        </View>
+
+        {/* ====================================================================
+           2. NUEVA SECCIÓN: PRECIOS POR MAYOR (Horizontal y Homogénea)
+           ==================================================================== */}
+        {hasPriceTiers && (
+          <View style={styles.tierSection}>
+            <Text style={styles.tierHeaderTitle}>Precios x Mayor</Text>
+            <ScrollView 
+              horizontal 
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.tierScrollContainer}
+            >
+              {product.priceTiers!.map((tier, index) => {
+                const isCurrentTier =
+                  quantity >= tier.min && (tier.max === null ? true : quantity <= tier.max);
+
+                return (
+                  <View 
+                    key={index} 
+                    style={[styles.tierCard, isCurrentTier && styles.activeTierCard]}
+                  >
+                    <Text style={[styles.tierRangeText, isCurrentTier && styles.activeTierText]}>
+                      {tier.max ? `${tier.min}-${tier.max}` : `${tier.min}+`} u.
+                    </Text>
+                    <Text style={[styles.tierPriceText, isCurrentTier && styles.activeTierText]}>
+                      ${tier.price}
+                    </Text>
+                  </View>
+                );
+              })}
+            </ScrollView>
+          </View>
         )}
 
         {/* ====================================================================
-           2. BLOQUE INFERIOR: DISEÑO COMÚN DE BASE (Para todos los productos)
+           3. BLOQUE INFERIOR: INFORMACIÓN Y SELECTOR (Común para todos)
            ==================================================================== */}
         <ProductInfo
           name={product.name}
-          unitPrice={currentUnitPrice} // Se actualiza en tiempo real si cambia el tramo
+          unitPrice={currentUnitPrice}
           subtotal={subtotal}
         >
           <QuantitySelector
@@ -150,91 +146,58 @@ export default function ProductoDetalle() {
 }
 
 const styles = StyleSheet.create({
-  // Fila dividida inteligente para la parte superior
-  imageTierRow: {
-    flexDirection: "row",
-    paddingHorizontal: layout.screenPadding,
+  imageContainer: {
+    // Asegura que la imagen use todo el ancho estándar asignado por el componente ProductImage
+    width: "100%",
+  },
+  // Contenedor de la sección mayorista montada en horizontal
+  tierSection: {
     marginTop: spacing.md,
-    gap: 12,
-    alignItems: "center",
-    marginBottom:20,
-  },
-  // La imagen toma el 58% del espacio disponible
-  imageColumn: {
-    flex: 1.4,
-  },
-  // Estilo personalizado que le pasamos a tu ProductImage para que se adapte perfecto al lado de la tabla
-  splitImageContainer: {
-    height: 200, 
-    marginBottom: 0,
-    backgroundColor: "#F9FAFB",
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-  },
-  // La tabla toma el 42% restante, simulando una franja lateral ordenada
-  tierColumn: {
-    flex: 1,
-    backgroundColor: "#FFF",
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-    padding: 10,
-    height: 200,
-    justifyContent: "center",
+    marginBottom: spacing.xs,
   },
   tierHeaderTitle: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "700",
     color: "#1F2937",
-    marginBottom: 8,
-    textAlign: "center",
+    paddingHorizontal: layout.screenPadding,
+    marginBottom: 10,
   },
-  tierTable: {
-    gap: 5,
+  tierScrollContainer: {
+    paddingHorizontal: layout.screenPadding,
+    gap: 10,
+    paddingBottom: 4, 
   },
-  tierRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+  // Formato tarjeta para los tramos de precios
+  tierCard: {
     alignItems: "center",
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    borderRadius: 8,
+    justifyContent: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    borderRadius: 12,
     backgroundColor: "#F3F4F6",
-  },
-  activeTierRow: {
-    backgroundColor: "#EFF2FF",
     borderWidth: 1,
+    borderColor: "#E5E7EB",
+    minWidth: 95,
+  },
+  activeTierCard: {
+    backgroundColor: "#EFF2FF",
+    borderWidth: 1.5,
     borderColor: "#2E3192",
   },
   tierRangeText: {
-    fontSize: 11,
+    fontSize: 12,
     color: "#4B5563",
     fontWeight: "600",
+    marginBottom: 2,
   },
   tierPriceText: {
-    fontSize: 11,
+    fontSize: 14,
     color: "#1F2937",
     fontWeight: "700",
   },
   activeTierText: {
     color: "#2E3192",
     fontWeight: "800",
-  },
-  descriptionSection: {
-    paddingHorizontal: layout.screenPadding,
-    marginTop: spacing.md,
-  },
-  descriptionTitle: {
-    fontSize: 16,
-    fontWeight: "700",
-    color: "#1F2937",
-    marginBottom: 6,
-  },
-  descriptionBody: {
-    fontSize: 14,
-    color: "#4B5563",
-    lineHeight: 20,
   },
   disclaimer: {
     fontSize: 12,

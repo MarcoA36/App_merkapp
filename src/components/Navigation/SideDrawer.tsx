@@ -24,14 +24,23 @@ export default function SideDrawer() {
 
     { id: "privacidad", title: "Política de privacidad", icon: ShieldCheck },
     { id: "horario", title: "Horario de atención", icon: Clock },
-    { id: "reclamaciones", title: "Libro de reclamaciones", icon: BookOpen },
+    { id: "reclamos", title: "Libro de reclamaciones", icon: BookOpen },
   ];
-const handleItemPress = (id: string) => {
-  closeMenu(); // Cerramos el menú lateral primero
+// const handleItemPress = (id: string) => {
+//   closeMenu();
   
-  if (id === "perfil") {
-    router.push("/perfil"); // 👈 2. Navegamos a la ruta del perfil
-  }
+//   if (id === "perfil") {
+//     router.push("/perfil"); 
+//   }
+// };
+const handleItemPress = (id: string) => {
+    closeMenu(); // Cerramos el menú lateral primero para una transición limpia
+    router.push(`/${id}` as any); // 👈 Navega automáticamente a /perfil, /ubicaciones, /reclamos, etc.
+  };
+
+  const handleLogout = () => {
+  closeMenu(); 
+  router.replace("/"); 
 };
   return (
     <View style={styles.container}>
@@ -66,7 +75,7 @@ const handleItemPress = (id: string) => {
 
         {/* Footer con Botón Cerrar Sesión */}
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.logoutButton} activeOpacity={0.8}>
+          <TouchableOpacity style={styles.logoutButton} activeOpacity={0.8} onPress={handleLogout}>
             <Text style={styles.logoutText}>Cerrar sesión</Text>
           </TouchableOpacity>
           <Text style={styles.versionText}>Versión 3.20.6 (115)</Text>
