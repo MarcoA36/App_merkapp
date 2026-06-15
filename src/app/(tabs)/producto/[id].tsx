@@ -74,7 +74,7 @@ export default function ProductoDetalle() {
           />
         </ProductInfo>
 
-        <AddToCartButton
+        {/* <AddToCartButton
           onPress={() => {
             for (let i = 0; i < quantity; i++) {
               addToCart({ ...product, price: currentUnitPrice });
@@ -88,7 +88,29 @@ export default function ProductoDetalle() {
               ]
             );
           }}
-        />
+        /> */}
+        <AddToCartButton
+  onPress={() => {
+    // 🟢 Pasamos el producto y la cantidad directamente sin hacer un 'for' loop
+    addToCart(product, quantity);
+
+    Alert.alert(
+      "¡Agregado al carrito!",
+      `Sumaste ${quantity} u. al carrito con éxito.`,
+      [
+        {
+          text: "Seguir comprando",
+          onPress: () => { setQuantity(1); router.back(); },
+          style: "cancel",
+        },
+        {
+          text: "Ver mi carrito",
+          onPress: () => { setQuantity(1); router.push("/carrito"); },
+        },
+      ]
+    );
+  }}
+/>
 
         <Text style={styles.disclaimer}>
           Imagen ilustrativa. El diseño y presentación del producto pueden variar.

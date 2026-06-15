@@ -31,7 +31,13 @@ export function ProductWholesaleHeader({ product, quantity }: ProductWholesaleHe
                 <Text style={[styles.tierRangeText, isCurrentTier && styles.activeTierText]}>
                   {tier.max ? `${tier.min}-${tier.max}` : `${tier.min}+`} u.
                 </Text>
-                <Text style={[styles.tierPriceText, isCurrentTier && styles.activeTierText]}>
+                
+                {/* 🟢 Aplicamos el tamaño extra grande SOLO si es la tarjeta activa */}
+                <Text style={[
+                  styles.tierPriceText, 
+                  isCurrentTier && styles.activeTierText,
+                  isCurrentTier && styles.activeTierPriceText
+                ]}>
                   ${tier.price}
                 </Text>
               </View>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.md,
     paddingHorizontal: layout.screenPadding,
     gap: spacing.md,
-    alignItems: "center", // 🟢 1. Centra verticalmente la imagen y la columna de precios
+    alignItems: "center", 
   },
   imageSide: {
     flex: 1.2, 
@@ -80,6 +86,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#EFF2FF",
     borderWidth: 1.5,
     borderColor: "#2E3192",
+    paddingVertical: 10, // 🟢 Un poquito más de aire vertical para alojar el número grande
   },
   tierRangeText: {
     fontSize: 11,
@@ -88,12 +95,16 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   tierPriceText: {
-    fontSize: 16, // 🟢 2. Precio agrandado (antes estaba en 13)
+    fontSize: 15, // Precio base para las escalas inactivas
     color: "#1F2937",
     fontWeight: "700",
   },
   activeTierText: {
     color: "#2E3192",
     fontWeight: "800",
+  },
+  // 🟢 NUEVO ESTILO: Se activa solo en el precio seleccionado
+  activeTierPriceText: {
+    fontSize: 20, 
   },
 });
